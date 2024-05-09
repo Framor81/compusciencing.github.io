@@ -49,7 +49,7 @@ Eventually you will see the following Until Packaging complete prompt, at which 
 
 ## Packaging for MAC
 
-In order to package for Mac we must use one of the two computers in the back row, closest to the door in Edmunds 219 as Unreal Engine 5.2 and Xcode 14.2 are installed on them.
+In order to package for Mac we must use one of the two computers in the back row, closest to the door in Edmunds 219 as Unreal Engine 5.2 and Xcode 14.2 are installed on them. Much of the same steps will be followed as before except when choosing to package the content you will hover over Mac instead!
 
 ### Optional Steps Assuming the Project is on a Windows Device:
 
