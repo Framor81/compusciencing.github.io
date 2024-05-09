@@ -1,0 +1,57 @@
+---
+layout: post
+title: "Setting up the HPC Environment"
+tags: ["hpc", "environment", "terminal"]
+author: "Anjali Nuggehalli"
+---
+
+Follow these steps to set up the HPC Environment and then run commands in the terminal:
+
+1. Request an account on HPC by emailing ITS (servicedesk@pomona.edu) or creating a ticket on their [website](https://servicedesk.pomona.edu/support/home).
+2. Once your account has been granted approval, visit the [dashboard](https://ondemand.hpc.pomona.edu/pun/sys/dashboard).
+3. Scroll down to the bottom and select Jupyter Notebook under Interactive Apps.
+4. Set "Pom Partitions" to gpu and set the number of GPUs to at least 1 (we used 2 when trying to run the `training.py` script). Be sure to request a reasonable amount of memory depending on your need (we requested 5G for the training.py script).
+5. The job may take a second to launch. After it has started, click on the button “Connect to Jupyter”, which will lead you to the website interface for Jupyter Notebook.
+6. To run a python file, create a new python file in the jupyter notebook and copy the code you wish to run. At the top of the file, copy in:
+
+```bash
+#!/bigdata/rhome/jzzo2022/miniforge3/envs/wandb/bin/python
+```
+
+(substituting in the correct path to where you’ve installed python on your computer).
+
+7. Open a new terminal. Type the command: `chmod u+x FILENAME`. This command makes the script executable. Type the command `ls -l` to double check it has worked. The script’s name should be in green.
+
+8. To run the script, you must submit it as a job using slurm. The correct command for this is:
+
+```bash
+srun -n 1 -N 1 --gres=gpu:1 --time 0-01:00:00 [path to file] [any additional arguments]
+```
+
+The example script asks for one task and one node. Hypothetically, this number can be increased. However, we ran into some trouble when asking for 4 tasks and 2 nodes.
+
+For more information about HPC and submitting jobs, see [the HPC documentation](https://pomona-college-hpc.readthedocs.io/en/latest/submitting_job/).
+
+
+## Next Steps
+
+Once you're in the HPC Terminal:
+
+1. `conda create -n insert name here`
+2. `conda activate`
+3. install packages you need: `pip install PACKAGES`
+4. Run your script using slurm (see above instructions)
+
+Note: activate conda environment every time you want to use it
+
+For inference.py
+
+1. After copy pasting the code into new py file, run chmod command (see above) to make it executable
+2. Git clone arcs lab ue5osc git repo
+3. Go into sidebar folder and pull everything out of subfolder so computer can navigate to it
+
+```bash
+pip install python-osc
+````
+
+4. Copy utils.py code, saved it within same directory
